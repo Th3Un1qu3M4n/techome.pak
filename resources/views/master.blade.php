@@ -30,7 +30,12 @@
     ></script>
 
     <script src="https://kit.fontawesome.com/bcccf98175.js" crossorigin="anonymous"></script>
-    
+    <style>
+        .login-area{
+            min-height: 50vh;
+            padding: 2%;
+        }
+    </style>
 </head>
 <body>
     {{View::make('header')}}

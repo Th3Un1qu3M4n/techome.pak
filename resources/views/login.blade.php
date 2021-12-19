@@ -24,7 +24,7 @@
         </div>
         
     </div> --}}
-    <div class="container text-center">
+    <div class="container text-center login-area">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <form class="form-signin">
