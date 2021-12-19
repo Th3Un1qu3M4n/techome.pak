@@ -16,6 +16,7 @@
 
 </head>
 <body>
+    {{View::make('header')}}
     @yield('content')
     
 </body>
