@@ -1,7 +1,7 @@
 <!-- Footer -->
 <footer class="page-footer font-small blue-grey lighten-5">
 
-    <div style="background-color: #21d192;">
+    <div style="background-color: #dc3545; color:#fff;">
       <div class="container">
   
         <!-- Grid row-->
@@ -56,11 +56,9 @@
         <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
   
           <!-- Content -->
-          <h6 class="text-uppercase font-weight-bold">Company name</h6>
+          <h6 class="text-uppercase font-weight-bold">Techome</h6>
           <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-          <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet,
-            consectetur
-            adipisicing elit.</p>
+          <p>Providing all types of tech products and solutions at your doorstep with best rates and highest quality.</p>
   
         </div>
         <!-- Grid column -->
@@ -116,13 +114,13 @@
           <h6 class="text-uppercase font-weight-bold">Contact</h6>
           <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
           <p>
-            <i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+            <i class="fas fa-home mr-3"></i> Ghouri Town, Islamabad </p>
           <p>
-            <i class="fas fa-envelope mr-3"></i> info@example.com</p>
+            <i class="fas fa-envelope mr-3"></i> support@techome.com</p>
           <p>
-            <i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+            <i class="fab fa-whatsapp mr-3"></i> +92 321-2665513</p>
           <p>
-            <i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            <i class="fas fa-phone mr-3"></i> +92 320-2070278</p>
   
         </div>
         <!-- Grid column -->
@@ -134,8 +132,8 @@
     <!-- Footer Links -->
   
     <!-- Copyright -->
-    <div class="footer-copyright text-center text-black-50 py-3">© 2020 Copyright:
-      <a class="dark-grey-text" href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+    <div class="footer-copyright text-center text-black-50 py-3">&copy; 2021 Copyright:
+      <a class="dark-grey-text" href="https://ahmedev.me/"> Muhammad Ahmed</a>
     </div>
     <!-- Copyright -->
   

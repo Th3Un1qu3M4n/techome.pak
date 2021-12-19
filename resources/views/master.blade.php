@@ -33,7 +33,13 @@
     <style>
         .login-area{
             min-height: 50vh;
-            padding: 2%;
+            padding: 1%;
+        }
+        a{
+            color: #dc3545;
+        }
+        a:hover{
+            color:darkred;
         }
     </style>
 </head>
