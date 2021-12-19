@@ -2,9 +2,9 @@
 @section('title','Login Page')
 
 @section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-5">
+    {{-- <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
                 <h1> Login Page </h1>
         
                 <form>
@@ -23,5 +23,25 @@
             </div>
         </div>
         
+    </div> --}}
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form class="form-signin">
+                    <br>
+                    <h1 class="h3 mb-3 font-weight-normal">Please Login in</h1>
+                    <label for="inputEmail" class="sr-only">Email address</label>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                    <br>
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                    <br>
+                    <button class="btn btn-lg btn-danger btn-block" type="submit">Login in</button>
+                    
+                </form>
+            </div>
+        </div>
     </div>
+    
+      
 @endsection
