@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', [ProductController::class,'homePage']);
+Route::get('/', function(){
+    return view('welcome');
+});
 
 Auth::routes();
 
@@ -23,7 +25,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('/dashboard', function(){
-        // return view('admin.dashboard');
+        
         return view('admin.index');
     });
 });
