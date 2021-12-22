@@ -41,7 +41,53 @@
         a:hover{
             color:darkred;
         }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            padding-right: 10px;
+            padding-left: 10px; 
+            text-align: center;
+            font-family: arial;
+          }
+
+        .card:hover{
+          transform: scale(1.01);
+          cursor: pointer;
+        }
+
+          .price {
+            color: grey;
+            font-size: 22px;
+          }
+
+          .card .card-description{
+            display: block;
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          
+          }
+
+          .card button {
+            border: none;
+            outline: 0;
+            padding: 12px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+          }
+
+          .card button:hover {
+            opacity: 0.7;
+          }
     </style>
+    @yield('custom-style');
 </head>
 <body>
     {{View::make('header')}}
