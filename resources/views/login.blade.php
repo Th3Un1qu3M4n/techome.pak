@@ -27,15 +27,16 @@
     <div class="container text-center login-area">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <form class="form-signin">
+                <form class="form-signin" action="/login" method="POST">
                     <br>
                     <h1 class="h3 mb-3 font-weight-normal">Please Login in</h1>
                     <label for="inputEmail" class="sr-only">Email address</label>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
                     <br>
                     <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required="">
                     <br>
+                    @csrf
                     <button class="btn btn-lg btn-danger btn-block" type="submit">Login in</button>
                     
                 </form>
