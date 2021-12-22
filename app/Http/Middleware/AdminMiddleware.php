@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class UserAuth
+class AdminMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,9 +17,15 @@ class UserAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        if($request->path()=="login" && $request->session()->has('user')){
-            return redirect('/');
+        if(Auth::check()){
+            
+            if(Auth::user()->role_as == '1'){
+                return $next($request);
+            }else{
+                return redirect('/home')->with('status','Access Denied! require Admin Acess');
+            }
+        }else{
+            return redirect('/home')->with('status','Access Denied! require Login');
         }
-        return $next($request);
     }
 }
