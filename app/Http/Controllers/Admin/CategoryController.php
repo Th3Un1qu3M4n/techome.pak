@@ -22,8 +22,24 @@ class CategoryController extends Controller
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = time().".".$ext;
-            // $file->move();
+            $file->move('assets/uploads/category/',$filename);
+            $category->image = $filename;
         }
-        return view('admin.category.add');
+        else{
+            $category->image = "img not found";
+        }
+
+        $category->name = $request->input('name');
+        $category->slug = $request->input('slug');
+        $category->description = $request->input('description');
+        $category->status = $request->input('status') == TRUE ? '1' : '0';
+        $category->popular = $request->input('popular') == TRUE ? '1' : '0';
+        $category->meta_title = $request->input('meta_title');
+        $category->meta_desc = $request->input('meta_desc');
+        $category->meta_keywords = $request->input('meta_keywords');
+        
+        $category->save();
+
+        return redirect('/dashboard')->with('status', 'Category Added Successfully');
     }
 }

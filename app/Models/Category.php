@@ -17,8 +17,8 @@ class Category extends Model
         'status',
         'popular',
         'image',
-        'meta-title',
-        'meta-desc',
-        'meta-keywords',
+        'meta_title',
+        'meta_desc',
+        'meta_keywords',
     ];
 }
