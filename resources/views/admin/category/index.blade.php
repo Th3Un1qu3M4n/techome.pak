@@ -39,7 +39,7 @@
                                 <td>{{$category->name}}</td>
                                 <td>{{$category->description}}</td>
                                 <td><img src="{{asset('assets/uploads/category/'.$category->image)}}" alt="category img" style="height: 150px; width:150px;"></td>
-                                <td><button class="btn btn-primary">EDIT</button> <button class="btn btn-danger">DELETE</button></td>
+                                <td><a class="btn btn-primary" href="{{url('/edit-category/'.$category->id)}}">EDIT</button> <a class="btn btn-danger">DELETE</button></td>
                             </tr>                        
                         @endforeach
                     </tbody>
