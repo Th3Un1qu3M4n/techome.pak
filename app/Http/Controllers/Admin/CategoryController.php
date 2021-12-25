@@ -10,6 +10,8 @@ class CategoryController extends Controller
 {
     //
     public function index(){
+        $category = Category::all();
+
         return view('admin.category.index');
     }
     
@@ -26,7 +28,7 @@ class CategoryController extends Controller
             $category->image = $filename;
         }
         else{
-            $category->image = "img not found";
+            $category->image = "placeholder.png";
         }
 
         $category->name = $request->input('name');
