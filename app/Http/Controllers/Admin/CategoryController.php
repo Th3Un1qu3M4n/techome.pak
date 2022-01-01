@@ -43,7 +43,7 @@ class CategoryController extends Controller
         
         $category->save();
 
-        return redirect('/dashboard')->with('status', 'Category Added Successfully');
+        return redirect('/categories')->with('status', 'Category Added Successfully');
     }
 
     public function edit($id){
@@ -56,7 +56,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         
         if ($request->hasFile('image')){
-            $path = 'assets/uploads/category'.$category->image;
+            $path = 'assets/uploads/category/'.$category->image;
             if(File::exists($path) && $category->image != 'placeholder.png'){
                 File::delete($path);
             }
@@ -78,7 +78,20 @@ class CategoryController extends Controller
         $category->meta_keywords = $request->input('meta_keywords');
         
         $category->update();
-        return redirect('/dashboard')->with('status', 'Category Updated Successfully!');    
+        return redirect('/categories')->with('status', 'Category Updated Successfully!');    
 
+    }
+
+    public function delete($id){
+        $category = Category::find($id);
+        if($category->image != 'placeholder.png'){
+            $path = 'assets/uploads/category/'.$category->image;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+        }
+        $category->delete();
+        return redirect('/categories')->with('status', 'Category Deleted  Successfully!');    
+        
     }
 }
