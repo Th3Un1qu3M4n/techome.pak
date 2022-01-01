@@ -27,6 +27,7 @@
                         <tr class="text-center opacity-8">
                             <th>Id</th>
                             <th>Name</th>
+                            <th>Category</th>
                             <th>Description</th>
                             <th>Image</th>
                             <th>Action</th>
@@ -37,6 +38,7 @@
                             <tr class="text-center">
                                 <td >{{$product->id}}</td>
                                 <td>{{$product->name}}</td>
+                                <td>{{$product->category->name}}</td>
                                 <td>{{$product->short_desc}}</td>
                                 <td><img src="{{asset('assets/uploads/product/'.$product->image)}}" alt="product img" style="height: 150px; width:150px;"></td>
                                 <td><a class="btn btn-primary" href="{{url('/edit-product/'.$product->id)}}">EDIT</a> <a class="btn btn-danger" href="{{url('/delete-product/'.$product->id)}}">DELETE</a></td>

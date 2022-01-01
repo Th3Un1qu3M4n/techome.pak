@@ -56,7 +56,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         
         if ($request->hasFile('image')){
-            $path = 'assets/uploads/category'.$category->image;
+            $path = 'assets/uploads/category/'.$category->image;
             if(File::exists($path) && $category->image != 'placeholder.png'){
                 File::delete($path);
             }
