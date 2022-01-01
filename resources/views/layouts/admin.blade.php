@@ -23,6 +23,8 @@
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
   <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
 
+  
+
     <!-- Styles -->
     <link id="pagestyle" href="{{ asset('admin/css/material-dashboard.css?v=3.0.0') }}" rel="stylesheet" />
     
@@ -49,6 +51,22 @@
   <script src="{{asset('admin/js/perfect-scrollbar.min.js')}}"></script>
   <script src="{{asset('admin/js/smooth-scrollbar.min.js')}}"></script>
   <script src="{{asset('admin/js/chartjs.min.js')}}"></script>
+
+  <!-- Sweet Alert 2 -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  @if (session('status'))
+        <script>
+            console.log("fire Swal");
+            Swal.fire({
+                icon: 'success',
+                title: 'Done',
+                text: '{{session('status')}}'
+            })
+        </script>
+  
+      
+  @endif
 
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
