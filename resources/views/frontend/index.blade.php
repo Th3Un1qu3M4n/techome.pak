@@ -46,25 +46,59 @@
           </div>
     </section>
 
-    <section class="trending-products py-3">
+    <section class="trending-products py-4">
         {{-- {{$trending_products}} --}}
         <div class="container">
+            <h2 class="py-2">Featured Products</h2>
             <div class="row">
-                @foreach ($trending_products as $item)
-                    <div class="col-6 col-sm-4 col-md-3">
-                        <div class="card">
-                            <img src="{{asset('assets/uploads/product/'.$item->image)}}" alt="">
-                            <div class="card-body mt-2">
-                                
-                                <h5>{{$item->name}}</h5>
-                                <span class="price">Rs.{{$item->price}}</span>
-                                
+                <div class="owl-carousel featured-carousel owl-theme col-12">
+                    
+                    @foreach ($trending_products as $item)
+                        
+                            <div class="card">
+                                <img src="{{asset('assets/uploads/product/'.$item->image)}}" alt="">
+                                <div class="card-body mt-2">
+                                    
+                                    <h5>{{$item->name}}</h5>
+                                    <span class="price">Rs.{{$item->price}}</span>
+                                    
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                @endforeach
+                        
+                    @endforeach
+                        
+                    
+                    
+                </div>
+                
             </div>
 
         </div>
     </section>
+@endsection
+
+@section('custom-scripts')
+    <script>
+        $('.featured-carousel').owlCarousel({
+            loop:true,
+            margin:10,
+            autoplay:true,
+            autoplayTimeout:2000,
+            autoplayHoverPause:true,
+            responsive:{
+                200:{
+                    items:1
+                },
+                400:{
+                    items:2
+                },
+                600:{
+                    items:3
+                },
+                1000:{
+                    items:5
+                }
+            }
+        })
+    </script>
 @endsection

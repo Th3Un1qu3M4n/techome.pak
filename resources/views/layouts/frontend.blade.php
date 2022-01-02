@@ -14,6 +14,8 @@
 
     <!-- Styles -->
     <link id="pagestyle" href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <link id="pagestyle" href="{{ asset('frontend/css/owl.carousel.min.css') }}" rel="stylesheet" />
+    <link id="pagestyle" href="{{ asset('frontend/css/owl.theme.default.min') }}" rel="stylesheet" />
     <style>
         body{
             padding-top: 4vh;
@@ -41,6 +43,7 @@
     <!-- Scripts -->
     <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('frontend/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
 
     <!-- show page when loaded -->
     {{-- <script>
@@ -64,7 +67,8 @@
     
         
     @endif
-
+    
+    @yield('custom-scripts')
 
    
     
