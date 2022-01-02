@@ -55,7 +55,7 @@
                         <div class="card">
                             <img src="{{asset('assets/uploads/product/'.$item->image)}}" alt="">
                             <div class="card-body mt-2">
-                                Hello
+                                
                                 <h5>{{$item->name}}</h5>
                                 <span class="price">Rs.{{$item->price}}</span>
                                 

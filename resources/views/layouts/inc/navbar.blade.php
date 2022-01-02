@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+<nav class="navbar fixed-top navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{url('/')}}">
             <img src="{{asset('assets/brand_name.png')}}" alt="" height="40" class="d-inline-block align-text-top">

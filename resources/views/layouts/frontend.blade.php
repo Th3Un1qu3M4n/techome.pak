@@ -14,31 +14,12 @@
 
     <!-- Styles -->
     <link id="pagestyle" href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet" />
+    <style>
+        body{
+            padding-top: 4vh;
+        }
 
-    {{-- <style>
-        .loader-wrapper {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: #da4619;
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            }
-        .loader {
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            position: relative;
-            /* top: 50%; */
-            /* border: 4px solid #Fff; */
-            color: #fff;
-            animation: loader 3s infinite ease;
-            }
-    </style> --}}
-
+    </style>
     @yield('custom-css')
 
 </head>
