@@ -8,12 +8,12 @@
                     <h3>Edit Category <small class="text-muted"> #{{$category->id}} </small></h3> 
                 </div>
                 <div class="col-md-3 col-sm-5">
-                    <a class="btn bg-gradient-dark mb-0" href="{{url('/categories')}}"><i class="material-icons text-sm">arrow_back</i>&nbsp;&nbsp; Back</a>
+                    <a class="btn bg-gradient-dark mb-0" href="{{url('/dashboard/categories')}}"><i class="material-icons text-sm">arrow_back</i>&nbsp;&nbsp; Back</a>
                 </div>
             </div>
         </div>
         <div class="card-body">
-            <form enctype="multipart/form-data" action="{{url('/edit-category/'.$category->id)}}" method="POST">
+            <form enctype="multipart/form-data" action="{{url('/dashboard/categories/edit-category/'.$category->id)}}" method="POST">
                 @method('PUT')
                 <div class="row">
                     

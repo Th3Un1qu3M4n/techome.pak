@@ -8,7 +8,7 @@
                     <h2>Products Page</h2>
                 </div>
                 <div class="col-sm-2 col-5">
-                    <a class="btn bg-gradient-dark mb-0" href="{{url('/add-product')}}"><i class="material-icons text-sm">add</i>&nbsp;&nbsp; New</a>
+                    <a class="btn bg-gradient-dark mb-0" href="{{url('/dashboard/products/add-product')}}"><i class="material-icons text-sm">add</i>&nbsp;&nbsp; New</a>
                 </div>
             </div>
         </div>
@@ -41,7 +41,7 @@
                                 <td>{{$product->category->name}}</td>
                                 <td>{{$product->short_desc}}</td>
                                 <td><img src="{{asset('assets/uploads/product/'.$product->image)}}" alt="product img" style="height: 150px; width:150px;"></td>
-                                <td><a class="btn btn-primary" href="{{url('/edit-product/'.$product->id)}}">EDIT</a> <a class="btn btn-danger" href="{{url('/delete-product/'.$product->id)}}">DELETE</a></td>
+                                <td><a class="btn btn-primary" href="{{url('/dashboard/products/edit-product/'.$product->id)}}">EDIT</a> <a class="btn btn-danger" href="{{url('/dashboard/products/delete-product/'.$product->id)}}">DELETE</a></td>
                             </tr>                        
                         @endforeach
                     </tbody>

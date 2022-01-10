@@ -8,7 +8,7 @@
                     <h2>Category Page</h2>
                 </div>
                 <div class="col-sm-2 col-5">
-                    <a class="btn bg-gradient-dark mb-0" href="{{url('/add-category')}}"><i class="material-icons text-sm">add</i>&nbsp;&nbsp; New</a>
+                    <a class="btn bg-gradient-dark mb-0" href="{{url('/dashboard/categories/add-category')}}"><i class="material-icons text-sm">add</i>&nbsp;&nbsp; New</a>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                                 <td>{{$category->name}}</td>
                                 <td>{{$category->description}}</td>
                                 <td><img src="{{asset('assets/uploads/category/'.$category->image)}}" alt="category img" style="height: 150px; width:150px;"></td>
-                                <td><a class="btn btn-primary" href="{{url('/edit-category/'.$category->id)}}">EDIT</a> <a class="btn btn-danger" href="{{url('/delete-category/'.$category->id)}}">DELETE</a></td>
+                                <td><a class="btn btn-primary" href="{{url('/dashboard/categories/edit-category/'.$category->id)}}">EDIT</a> <a class="btn btn-danger" href="{{url('/dashboard/categories/delete-category/'.$category->id)}}">DELETE</a></td>
                             </tr>                        
                         @endforeach
                     </tbody>

@@ -8,12 +8,12 @@
                     <h3>Add Product</h3>
                 </div>
                 <div class="col-md-3 col-sm-5">
-                    <a class="btn bg-gradient-dark mb-0" href="{{url('/products')}}"><i class="material-icons text-sm">arrow_back</i>&nbsp;&nbsp; Back</a>
+                    <a class="btn bg-gradient-dark mb-0" href="{{url('/dashboard/products')}}"><i class="material-icons text-sm">arrow_back</i>&nbsp;&nbsp; Back</a>
                 </div>
             </div>
         </div>
         <div class="card-body">
-            <form enctype="multipart/form-data" action="{{url('/insert-product')}}" method="post">
+            <form enctype="multipart/form-data" action="{{url('/dashboard/products/insert-product')}}" method="post">
                 <div class="row">
                     
                     <div class="col-md-6">
