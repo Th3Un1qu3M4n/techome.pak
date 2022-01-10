@@ -34,23 +34,12 @@
 
    @include('layouts.inc.footer')
 
-{{-- 
-   <!-- Loader -->
-   <div class="loader-wrapper">
-    <span class="loader">LOADING</span>
-   </div> --}}
 
     <!-- Scripts -->
     <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('frontend/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
 
-    <!-- show page when loaded -->
-    {{-- <script>
-        $(window).on("load",function(){
-            $(".loader-wrapper").fadeOut("slow");
-        });
-    </script> --}}
 
     <!-- Sweet Alert 2 -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
