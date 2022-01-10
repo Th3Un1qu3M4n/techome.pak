@@ -46,7 +46,8 @@
     </main>
     
     <!-- Scripts -->
-    <script src="{{asset('admin/js/popper.min.js')}}"></script>
+  <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
+  <script src="{{asset('admin/js/popper.min.js')}}"></script>
   <script src="{{asset('admin/js/bootstrap.min.js')}}"></script>
   <script src="{{asset('admin/js/perfect-scrollbar.min.js')}}"></script>
   <script src="{{asset('admin/js/smooth-scrollbar.min.js')}}"></script>

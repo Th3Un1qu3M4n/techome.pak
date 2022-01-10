@@ -10,11 +10,19 @@ use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
-    public function index(){
-        $products = Product::all();
-        
+    public function index(){    
+        return view('admin.product.index');
+    }
 
-        return view('admin.product.index', compact('products'));
+    public function getProducts(){
+        $products = Product::all();
+        $categories = Category::all();
+        
+        return response()->json([
+                'status'=>200,
+                'products'=>$products,
+                'categories'=>$categories,
+        ]);
     }
     public function add(){
         $categories = Category::all();
@@ -53,7 +61,12 @@ class ProductController extends Controller
 
         $product = Product::find($id);
         $categories = Category::all();
-        return view('admin.product.edit', compact('product', 'categories'));
+        
+        return response()->json([
+                'status'=>200,
+                'product'=>$product,
+                'categories'=>$categories,
+        ]);
     }
 
     public function update(Request $request, $id){
@@ -85,7 +98,11 @@ class ProductController extends Controller
         $product->meta_keywords = $request->input('meta_keywords');
         
         $product->update();
-        return redirect('/products')->with('status', 'Product Updated Successfully!');    
+        // return redirect('/products')->with('status', 'Product Updated Successfully!');
+        return response()->json([
+            'status'=>200,
+            'message'=>"Product updated successfully",
+    ]);   
 
     }
 
