@@ -18,7 +18,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{Request::is('products') ? 'active bg-gradient-primary' : ''}}" href="{{url('/dashboard/products')}}">
+          <a class="nav-link text-white {{Request::is('dashboard/products') ? 'active bg-gradient-primary' : ''}}" href="{{url('/dashboard/products')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -26,7 +26,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{Request::is('orders') ? 'active bg-gradient-primary' : ''}}" href="{{url('/dashboard/orders')}}">
+          <a class="nav-link text-white {{Request::is('dashboard/orders') ? 'active bg-gradient-primary' : ''}}" href="{{url('/dashboard/orders')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
@@ -34,7 +34,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white {{Request::is('categories') ? 'active bg-gradient-primary' : ''}}" href="{{url('/dashboard/categories')}}">
+          <a class="nav-link text-white {{Request::is('dashboard/categories') ? 'active bg-gradient-primary' : ''}}" href="{{url('/dashboard/categories')}}">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">view_in_ar</i>
             </div>
