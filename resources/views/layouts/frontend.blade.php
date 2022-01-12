@@ -20,6 +20,26 @@
         body{
             padding-top: 4vh;
         }
+        .breadcrumbs {
+            list-style: none;
+            height: 2em;
+            width: 100%;
+        }
+        .breadcrumbs-item {
+            display: inline;
+        }
+        .breadcrumbs-item a{
+            font: bolder;
+            text-decoration: none;
+            color:#ff5757 !important;
+        }
+        .breadcrumbs-item a:hover{
+            color:#ff1616 !important;
+        }
+
+        .breadcrumbs-item .active{
+            color:#ff0000 !important;
+        }
 
     </style>
     @yield('custom-css')

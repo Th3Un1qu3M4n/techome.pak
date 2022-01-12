@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Auth;
 //     return view('frontend.index');
 // });
 Route::get('/', 'frontendController@index');
+Route::get('/shop', 'frontendController@shop');
+Route::get('/shop/{slug}', 'frontendController@viewCategory');
+Route::get('/shop/{slug}/{prod_id}', 'frontendController@viewProduct');
 
 Auth::routes();
 
