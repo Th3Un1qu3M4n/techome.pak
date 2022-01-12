@@ -26,6 +26,11 @@
         input[type=number] {
         -moz-appearance: textfield;
         }
+
+        .input-group-text{
+            cursor: pointer;
+            user-select: none;
+        }
     </style>
     
 @endsection
@@ -62,14 +67,14 @@
                                 <label class="badge bg-danger">Out of Stock</label>
                             @endif
                             <div class="row mt-2">
-                                <div class="col-md-2 ">
+                                <div class="col-sm-4 col-md-3">
                                     <div class="input-group mb-3">
-                                        <span class="input-group-text">+</span>
-                                        <input type="number" class="form-control" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                                        <span class="input-group-text">-</span>
+                                        <span class="input-group-text dcr-btn"> - </span>
+                                        <input type="number" class="form-control qty-input" placeholder="1" style="text-align:center;" disabled>
+                                        <span class="input-group-text inc-btn"> + </span>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-sm-6 col-md-4">
                                     <button class="btn btn-danger">Add to card</button>
                                 </div>
                             </div>
@@ -95,39 +100,43 @@
             </div>
         </div>
         
-        {{-- <div class="container">
-            <h2 class="py-2"> {{$category->name}}</h2>
-            <div class="row">
-                
-                    
-                        <div class="product-container  col-12">
-                            <div class="card m-2">
-                                <a  class="text-reset text-decoration-none" href="{{url('shop/'.$category->slug.'/'.$product->id)}}">
-                                <div class="card-body mt-2">
-                                    
-                                    <h5>{{$product->name}}</h5>
-                                    <span>{{$product->short_desc}}</span>
-                                    <div class="price">Rs.{{$product->price}}</div>
-                                    
-                                </div>
-                                </a>
-                            </div>
-                        </div>
-                        
-                    
-                        
-                    
-                    
-                
-                
-            </div>
-
-        </div> --}}
+        
     </section>
 @endsection
 
 @section('custom-scripts')
     <script>
+        $(document).ready(function () {
+            
+            $('.inc-btn').click(function (e) { 
+                e.preventDefault();
+
+                
+
+                var text_value = $('.qty-input').val();
+                var value = parseInt(text_value, 10);
+                value = isNaN(value) ? 0 : value;
+                if(value < 10){
+                    value++;
+                    $('.qty-input').val(value);
+                }                
+            });
+
+            $('.dcr-btn').click(function (e) { 
+                e.preventDefault();
+
+                
+
+                var text_value = $('.qty-input').val();
+                var value = parseInt(text_value, 10);
+                value = isNaN(value) ? 0 : value;
+                if(value > 0){
+                    value--;
+                    $('.qty-input').val(value);
+                }                
+            });
+
+        });
         
     </script>
 @endsection
