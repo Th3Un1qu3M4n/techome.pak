@@ -39,7 +39,8 @@
                                 <div class="card-body mt-2">
                                     
                                     <h5>{{$item->name}}</h5>
-                                    <span>{{$item->short_desc}}</span>
+                                    {{-- <span>{{$item->short_desc}}</span> --}}
+                                    <span>{!! \Illuminate\Support\Str::limit($item->desc, 150, $end='...') !!}</span>
                                     <div class="price">Rs.{{$item->price}}</div>
                                     
                                 </div>

@@ -43,14 +43,15 @@
     <section class="product py-1">
 
         <div class="container">
-            <div class="card shadow-sm">
+            <div class="card shadow-sm product-data">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-5">
                             <img src="{{asset('assets/uploads/product/'.$product->image)}}" alt="">
                         </div>
                         <div class="col-md-7">
-                            <h2>
+                            <h2> 
+                                <input type="hidden" value="{{$product->id}}" class="prod_id">
                                  {{$product->name}}
                                  @if ($product->trending == '1')
                                     <label class="float-end badge bg-danger">Trending</label>
@@ -59,7 +60,7 @@
                             
                             <hr>
                             <label class="fw-bold">Price: Rs. {{$product->price}}</label>
-                            <p class="short_desc">{{$product->short_desc}}</p>
+                            <span class="short_desc">{!!$product->short_desc!!}</span>
                             <hr>
                             @if ($product->quantity > 0)
                                 <label class="badge bg-success">In Stock</label>
@@ -75,7 +76,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-6 col-md-4">
-                                    <button class="btn btn-danger">Add to card</button>
+                                    <button class="btn btn-danger addToCart-btn">Add to card</button>
                                 </div>
                             </div>
                                 
@@ -93,7 +94,7 @@
                     Product Description
                 </h5>
                 <div class="card-body">
-                    {{$product->desc}}
+                    {!! $product->desc !!}
                     
 
                 </div>
@@ -107,6 +108,43 @@
 @section('custom-scripts')
     <script>
         $(document).ready(function () {
+
+            $('.addToCart-btn').click(function (e) { 
+                e.preventDefault();
+
+                var product_id =$(this).closest('.product-data').find('.prod_id').val();
+                var product_qty =$(this).closest('.product-data').find('.qty-input').val();
+                $.ajaxSetup({
+                    headers:{
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $.ajax({
+                    type: "post",
+                    url: "/add-to-cart",
+                    data: {
+                        'prod_id':product_id,
+                        'prod_qty':product_qty,
+                    },
+                    success: function (response) {
+                        // console.log(response);
+                        // alert(response.status);
+                        Swal.fire({
+                            icon: response.isError == 'true' ? 'warning' : 'success',
+                            title: 'Done',
+                            text: response.status
+                        })
+                        
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        if(errorThrown == 'Unauthorized'){
+                            alert("Login to add to cart");
+                        }
+                    }
+                });
+                
+            });
             
             $('.inc-btn').click(function (e) { 
                 e.preventDefault();
@@ -115,7 +153,7 @@
 
                 var text_value = $('.qty-input').val();
                 var value = parseInt(text_value, 10);
-                value = isNaN(value) ? 0 : value;
+                value = isNaN(value) ? 1 : value;
                 if(value < 10){
                     value++;
                     $('.qty-input').val(value);
@@ -129,8 +167,8 @@
 
                 var text_value = $('.qty-input').val();
                 var value = parseInt(text_value, 10);
-                value = isNaN(value) ? 0 : value;
-                if(value > 0){
+                value = isNaN(value) ? 1 : value;
+                if(value > 1){
                     value--;
                     $('.qty-input').val(value);
                 }                

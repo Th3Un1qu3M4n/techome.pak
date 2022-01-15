@@ -36,14 +36,14 @@
                     </div>
                     
                     <div class="col-md-12">
+                        <label for="short_desc" class="mx-3">Short Description</label>
                         <div class="input-group input-group-outline my-3">
-                            <label for="description" class="form-label">Short Description</label>
                             <input name="short_desc" id="short_desc" class="form-control" value="" required>
                         </div>
                     </div>
                     <div class="col-md-12">
+                        <label for="description" class="mx-3">Long Description</label>
                         <div class="input-group input-group-outline my-3">
-                            <label for="description" class="form-label">Long Description</label>
                             <input name="desc" id="desc" class="form-control" value="" required>
                         </div>
                     </div>
@@ -103,5 +103,30 @@
             </form>
         </div>
     </div>
+    
+@endsection
+
+@section('scripts')
+    <script>
+        tinymce.init({
+        selector: '#short_desc', // Replace this CSS selector to match the placeholder element for TinyMCE
+        plugins: 'code lists',
+        // toolbar: 'undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table',
+        // plugins: [ 'quickbars' ],
+        toolbar: false,
+        menubar: false,
+        width: '100%',
+        height: '100'
+        });
+
+        tinymce.init({
+            selector: '#desc',
+            plugins: 'code lists',
+            toolbar: 'undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table',
+            width: '100%',
+            height: '300'
+        });
+
+    </script>
     
 @endsection

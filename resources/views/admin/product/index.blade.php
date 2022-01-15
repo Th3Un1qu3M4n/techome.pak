@@ -160,6 +160,11 @@
 
 <script>
     var img_path = "{{asset('assets/uploads/product/')}}";
+    function extractContent(s) {
+        var span = document.createElement('span');
+        span.innerHTML = s;
+        return span.textContent || span.innerText;
+    };
 
     function getAllProducts(){
         $('tbody').html("");
@@ -182,8 +187,8 @@
                                 <td >'+product.id+'</td>\
                                 <td>'+product.name+'</td>\
                                 <td>'+cat_name+'</td>\
-                                <td>'+product.short_desc+'</td>\
-                                <td><img src="'+img_path+'/'+product.image+'" alt="product img" style="height: 150px; width:150px;"></td>\
+                                <td>'+extractContent(product.desc).substring(0,30)+'...</td>\
+                                <td><img src="'+img_path+'/'+product.image+'" alt="product img" style="height: 150px; width:150px; object-fit:contain;"></td>\
                                 <td><button class="btn btn-primary editBtn" value="'+product.id+'" >EDIT</button>\
                                      <button class="btn btn-danger deleteBtn"  value="'+product.id+'" >DELETE</button>\
                                 </td>\
@@ -273,6 +278,46 @@
 
         
     });
+
+    $(document).on('click', '.deleteBtn', function(e) {
+            e.preventDefault();
+            var del_id = $(this).val();
+            
+
+            console.log(del_id);
+            Swal.fire({
+                icon: 'question',
+                title: 'Confirm to delete?',
+                showCancelButton: true,
+                confirmButtonText: 'Delete'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: "GET",
+                            url: "/dashboard/products/delete-product/"+del_id,
+                            success: function (response) {
+                                // console.log(response);
+                                // alert(response.status);
+                                getAllProducts();
+                                Swal.fire({
+                                    icon: response.status == 204 ? 'warning' : 'success',
+                                    title: 'Done',
+                                    text: response.message
+                                });
+                                
+                                
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                if(errorThrown == 'Unauthorized'){
+                                    alert("Login as admin to delete");
+                                }
+                            }
+                        });
+                    }
+            });
+
+        });
+
 
 </script>
     

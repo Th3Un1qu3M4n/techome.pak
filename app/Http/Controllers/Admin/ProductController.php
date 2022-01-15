@@ -54,7 +54,7 @@ class ProductController extends Controller
         
         $product->save();
 
-        return redirect('/products')->with('status', 'Product Added Successfully');
+        return redirect('/dashboard/products')->with('status', 'Product Added Successfully');
     }
 
     public function edit($id){
@@ -102,7 +102,7 @@ class ProductController extends Controller
         return response()->json([
             'status'=>200,
             'message'=>"Product updated successfully",
-    ]);   
+        ]);   
 
     }
 
@@ -115,7 +115,11 @@ class ProductController extends Controller
             }
         }
         $product->delete();
-        return redirect('/products')->with('status', 'Product Deleted  Successfully!');    
+        return response()->json([
+            'status'=>202,
+            'message'=>"Product Deleted successfully",
+        ]);
+           
         
     }
 

@@ -18,10 +18,12 @@
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <!-- Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-
+{{-- 
   <!-- Nucleo Icons -->
   <link href="../assets/css/nucleo-icons.css" rel="stylesheet" />
-  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
+  <link href="../assets/css/nucleo-svg.css" rel="stylesheet" /> --}}
+
+  <script src="https://cdn.tiny.cloud/1/satjyjb2faggn4zb0mgxut74ut18y7hd6kqcp616rhw27z29/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
   
 

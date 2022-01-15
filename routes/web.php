@@ -27,6 +27,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/add-to-cart', 'CartController@add');
+    
+});
+
 Route::middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('/dashboard', function(){
         return view('admin.index');
