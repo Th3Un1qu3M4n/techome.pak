@@ -18,6 +18,11 @@ use Illuminate\Support\Facades\Auth;
 // Route::get('/', function(){
 //     return view('frontend.index');
 // });
+
+//////////////////////////////////////
+//        FRONTEND ROUTES
+/////////////////////////////////////
+
 Route::get('/', 'frontendController@index');
 Route::get('/shop', 'frontendController@shop');
 Route::get('/shop/{slug}', 'frontendController@viewCategory');
@@ -28,10 +33,22 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+//////////////////////////////////////
+//        USER ROUTES
+/////////////////////////////////////
+
 Route::middleware(['auth'])->group(function () {
     Route::post('/add-to-cart', 'CartController@add');
+    Route::get('/cart', 'CartController@viewCart');
+    Route::post('/cart/delete-item', 'CartController@delete');
+    Route::post('/cart/update', 'CartController@update');
     
 });
+
+
+//////////////////////////////////////
+//        BACKEND ROUTES
+/////////////////////////////////////
 
 Route::middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('/dashboard', function(){

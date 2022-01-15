@@ -71,7 +71,7 @@
                                 <div class="col-sm-4 col-md-3">
                                     <div class="input-group mb-3">
                                         <span class="input-group-text dcr-btn"> - </span>
-                                        <input type="number" class="form-control qty-input" placeholder="1" style="text-align:center;" disabled>
+                                        <input type="number" class="form-control qty-input" value="1" style="text-align:center;" disabled>
                                         <span class="input-group-text inc-btn"> + </span>
                                     </div>
                                 </div>

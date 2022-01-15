@@ -15,7 +15,12 @@
     <!-- Styles -->
     <link id="pagestyle" href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link id="pagestyle" href="{{ asset('frontend/css/owl.carousel.min.css') }}" rel="stylesheet" />
-    <link id="pagestyle" href="{{ asset('frontend/css/owl.theme.default.min') }}" rel="stylesheet" />
+    <link id="pagestyle" href="{{ asset('frontend/css/owl.theme.default.min.css') }}" rel="stylesheet" />
+    
+    
+    <!-- Icons Kits -->
+    <script src="https://kit.fontawesome.com/bcccf98175.js" crossorigin="anonymous"></script>
+
     <style>
         body{
             padding-top: 4vh;
