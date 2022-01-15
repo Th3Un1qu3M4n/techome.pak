@@ -62,11 +62,12 @@ class ProductController extends Controller
         $product = Product::find($id);
         $categories = Category::all();
         
-        return response()->json([
-                'status'=>200,
-                'product'=>$product,
-                'categories'=>$categories,
-        ]);
+        // return response()->json([
+        //         'status'=>200,
+        //         'product'=>$product,
+        //         'categories'=>$categories,
+        // ]);
+        return view('admin.product.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, $id){
@@ -98,11 +99,11 @@ class ProductController extends Controller
         $product->meta_keywords = $request->input('meta_keywords');
         
         $product->update();
-        // return redirect('/products')->with('status', 'Product Updated Successfully!');
-        return response()->json([
-            'status'=>200,
-            'message'=>"Product updated successfully",
-        ]);   
+        return redirect('/dashboard/products')->with('status', 'Product Updated Successfully!');
+        // return response()->json([
+        //     'status'=>200,
+        //     'message'=>"Product updated successfully",
+        // ]);   
 
     }
 

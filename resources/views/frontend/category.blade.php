@@ -29,7 +29,6 @@
         <div class="container">
             <h2 class="py-2"> {{$category->name}}</h2>
             <div class="row">
-                {{-- <div class="owl-carousel featured-carousel owl-theme col-12"> --}}
                     
                     @foreach ($products as $item)
                         <div class="product-container  col-12 col-sm-6 col-md-4">
@@ -40,7 +39,7 @@
                                     
                                     <h5>{{$item->name}}</h5>
                                     {{-- <span>{{$item->short_desc}}</span> --}}
-                                    <span>{!! \Illuminate\Support\Str::limit($item->desc, 150, $end='...') !!}</span>
+                                    {{-- <span>{!! \Illuminate\Support\Str::limit($item->desc, 150, $end='...') !!}</span> --}}
                                     <div class="price">Rs.{{$item->price}}</div>
                                     
                                 </div>
@@ -52,7 +51,6 @@
                         
                     
                     
-                {{-- </div> --}}
                 
             </div>
 

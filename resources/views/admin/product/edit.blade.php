@@ -110,3 +110,26 @@
     </div>
     
 @endsection
+
+@section('scripts')
+    <script>
+        tinymce.init({
+        selector: '#short_desc', 
+        plugins: 'code lists',
+        toolbar: false,
+        menubar: false,
+        width: '100%',
+        min_height: '100'
+        });
+
+        tinymce.init({
+            selector: '#desc',
+            plugins: 'code lists',
+            toolbar: 'undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table',
+            width: '100%',
+            min_height: '500'
+        });
+
+    </script>
+    
+@endsection

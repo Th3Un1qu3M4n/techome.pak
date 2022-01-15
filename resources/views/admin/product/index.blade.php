@@ -75,13 +75,13 @@
                     <div class="col-md-12">
                         <div class="input-group input-group-outline my-3 align-items-center">
                             <label for="short_desc" class="mx-3">Short Description</label>
-                            <input name="short_desc" id="editShort_desc" class="form-control" value="" required>
+                            <input name="editshort_desc" id="editShort_desc" class="form-control" value="" required>
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="input-group input-group-outline my-3 align-items-center">
                             <label for="desc" class="mx-3">Long Description</label>
-                            <input name="desc" id="editDesc" class="form-control" value="" required>
+                            <input name="editdesc" id="editDesc" class="form-control" value="" required>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -159,7 +159,9 @@
 @section('scripts')
 
 <script>
+    
     var img_path = "{{asset('assets/uploads/product/')}}";
+    var editBaseLink = "{{url('/dashboard/products/edit-product/')}}";
     function extractContent(s) {
         var span = document.createElement('span');
         span.innerHTML = s;
@@ -205,79 +207,149 @@
     }
 
     getAllProducts();
-
     $(document).on('click', '.editBtn', function(e) {
-        e.preventDefault();
         var prod_id = $(this).val();
         
-        $('#editProdModal').modal('show');
-        $.ajax({
-            type: "get",
-            url: "/dashboard/products/edit-product/"+prod_id,
-            success: function (response) {
-                var prod = response.product;
-                $('#editId').val(prod.id);
-                $('#editName').val(prod.name);
-                $("#editCategory").val(prod.cat_id);
-                $('#editShort_desc').val(prod.short_desc);
-                $('#editDesc').val(prod.desc);
-                if(prod.status == '1'){
-                    $('#editStatus').prop('checked', true);
-                }
-                if(prod.trending == '1'){
-                    $('#editTrending').prop('checked', true);
-                }
-                $('#editPrice').val(prod.price);
-                $('#editQuantity').val(prod.quantity);
-                $('#meta_title').val(prod.meta_title);
-                $('#meta_keywords').val(prod.meta_keywords);
-                $('#meta_desc').val(prod.meta_desc);
-
-                $('#editImage').val("");
-                
-                $('#editProduct-img').attr('src',img_path+'/'+prod.image);
-                
-            }
-        });
+        window.open(editBaseLink+"/"+prod_id, '_self');
     });
 
-    $(document).on('submit', '#editProductForm', function(e) {
-        e.preventDefault();
-        var editId = $('#editId').val();
-        console.log(editId);
-        let editedformData = new FormData($('#editProductForm')[0]);
-        $.ajax({
-            type: "POST",
-            url: "/dashboard/products/edit-product/"+editId,
-            data: editedformData,
-            contentType: false,
-            processData: false,
-            success: function (response) {
+    // $(document).on('click', '.editBtn', function(e) {
+    //     e.preventDefault();
+    //     var prod_id = $(this).val();
+
+    //     tinymce.init({
+    //     selector: '#editShort_desc', 
+    //     plugins: 'code lists',
+    //     toolbar: false,
+    //     menubar: false,
+    //     width: '100%',
+    //     height: '100',
+    //     // setup: function (editor) {
+    //     //     editor.on('change', function () {
+    //     //         editor.save();
+    //     //     });
+    //     // }
+    //     });
+
+    //     tinymce.init({
+    //         selector: '#editDesc',
+    //         plugins: 'code lists',
+    //         toolbar: 'undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table',
+    //         width: '100%',
+    //         height: '300',
+    //         // setup: function (editor) {
+    //         //     editor.on('change', function () {
+    //         //         editor.save();
+    //         //     });
+    //         // }
+    //     });
+        
+        
+    //     $('#editProdModal').modal('show');
+    //     $.ajax({
+    //         type: "get",
+    //         url: "/dashboard/products/edit-product/"+prod_id,
+    //         success: function (response) {
+    //             var prod = response.product;
+    //             var shortDesc = tinyMCE.get('editShort_desc');
+    //             var desc = tinyMCE.get('editDesc');
+
+    
+    //             shortDesc.setProgressState(1);
+    //             desc.setProgressState(1); 
+    //             window.setTimeout(function() {
+    //                 shortDesc.setProgressState(0); 
+    //                 desc.setProgressState(0); 
+    //                 shortDesc.setContent(prod.short_desc);
+    //                 desc.setContent(prod.desc);
+    //             }, 1000);
+
+    //             $('#editId').val(prod.id);
+    //             $('#editName').val(prod.name);
+    //             $("#editCategory").val(prod.cat_id);
+    //             // $('#editShort_desc').val(prod.short_desc);
+    //             // $('#editDesc').val(prod.desc);
+    //             if(prod.status == '1'){
+    //                 $('#editStatus').prop('checked', true);
+    //             }
+    //             if(prod.trending == '1'){
+    //                 $('#editTrending').prop('checked', true);
+    //             }
+    //             $('#editPrice').val(prod.price);
+    //             $('#editQuantity').val(prod.quantity);
+    //             $('#meta_title').val(prod.meta_title);
+    //             $('#meta_keywords').val(prod.meta_keywords);
+    //             $('#meta_desc').val(prod.meta_desc);
+
+    //             $('#editImage').val("");
                 
-                if(response.status == 200){
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Done',
-                        text: 'Updated!'
-                    });
-                    getAllProducts();
-                }else{
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Failed',
-                        text: 'Some Error Occured!'
-                    });
-                }
+    //             $('#editProduct-img').attr('src',img_path+'/'+prod.image);
+                
+    //         }
+    //     });
+    // });
+    
+    // $(document).on('submit', '#editProductForm', function(e) {
+    //     // $('#textarea_id').tinymce().save();
+    //     // alert("asfaf")
+    //     e.preventDefault();
+    //     // var shortData;
+    //     // var Data;
+
+    //     // window.onload = function(){
+    //     var shortDesc = tinyMCE.get('editShort_desc');
+    //     var desc = tinyMCE.get('editDesc');
+
+    //     var shortData = shortDesc.getContent();
+    //     var Data = desc.getContent();
+    //     // }
+    //     // // console.log(shortData);
+
+
+    //     // // $('#editShort_desc').tinymce().save();
+    //     // var editId = $('#editId').val();
+    //     // console.log(editId);
+    //     let editedformData = new FormData($('#editProductForm')[0]);
+
+    //     // editedformData.set('short_desc', shortData);
+    //     // editedformData.set('desc', Data);
+    //     // console.log(editedformData);
+
+
+
+
+    //     $.ajax({
+    //         type: "POST",
+    //         url: "/dashboard/products/edit-product/"+editId,
+    //         data: editedformData,
+    //         contentType: false,
+    //         processData: false,
+    //         success: function (response) {
+                
+    //             if(response.status == 200){
+    //                 Swal.fire({
+    //                     icon: 'success',
+    //                     title: 'Done',
+    //                     text: 'Updated!'
+    //                 });
+    //                 getAllProducts();
+    //             }else{
+    //                 Swal.fire({
+    //                     icon: 'error',
+    //                     title: 'Failed',
+    //                     text: 'Some Error Occured!'
+    //                 });
+    //             }
                 
 
                 
-            }
-        });
+    //         }
+    //     });
         
-        $('#editProdModal').modal('hide');
+    //     $('#editProdModal').modal('hide');
 
         
-    });
+    // });
 
     $(document).on('click', '.deleteBtn', function(e) {
             e.preventDefault();
