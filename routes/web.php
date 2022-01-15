@@ -42,6 +42,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cart', 'CartController@viewCart');
     Route::post('/cart/delete-item', 'CartController@delete');
     Route::post('/cart/update', 'CartController@update');
+
+    Route::get('/cart/checkout', 'CheckoutController@viewCheckout');
     
 });
 

@@ -81,8 +81,10 @@
                 </div>
                 <div class="card-footer">
                         <h6>
-                            Total Price: {{$totalPrice}}
-                            <button class="float-end btn btn-dark text-white fw-bold">Proceed to Checkout</button>
+                            Total Price: {{number_format($totalPrice)}}
+                            <a href="{{url('/cart/checkout')}}">
+                                <button class="float-end btn btn-dark text-white fw-bold">Proceed to Checkout</button>
+                            </a>
                         </h6>
                 </div>
             </div>
