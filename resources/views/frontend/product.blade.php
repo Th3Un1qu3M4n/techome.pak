@@ -59,7 +59,7 @@
                             </h2>
                             
                             <hr>
-                            <label class="fw-bold">Price: Rs. {{$product->price}}</label>
+                            <label class="fw-bolder lh-lg fs-5">Price: Rs. {{number_format($product->price)}}</label><br>
                             <span class="short_desc">{!!$product->short_desc!!}</span>
                             <hr>
                             @if ($product->quantity > 0)
@@ -75,9 +75,11 @@
                                         <span class="input-group-text inc-btn"> + </span>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-md-4">
-                                    <button class="btn btn-danger addToCart-btn">Add to card</button>
-                                </div>
+                                @if ($product->quantity > 0)
+                                    <div class="col-sm-6 col-md-4">
+                                        <button class="btn btn-danger addToCart-btn">Add to Cart</button>
+                                    </div>
+                                @endif
                             </div>
                                 
                               
@@ -108,6 +110,7 @@
 @section('custom-scripts')
     <script>
         $(document).ready(function () {
+            var availableProducts = '{{$product->quantity}}';
 
             $('.addToCart-btn').click(function (e) { 
                 e.preventDefault();
@@ -154,7 +157,7 @@
                 var text_value = $('.qty-input').val();
                 var value = parseInt(text_value, 10);
                 value = isNaN(value) ? 1 : value;
-                if(value < 10){
+                if(value < 10 && value < availableProducts){
                     value++;
                     $('.qty-input').val(value);
                 }                

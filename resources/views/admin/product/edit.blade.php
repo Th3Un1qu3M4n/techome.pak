@@ -119,16 +119,34 @@
         toolbar: false,
         menubar: false,
         width: '100%',
-        min_height: '100'
+        min_height: '10'
         });
 
         tinymce.init({
             selector: '#desc',
-            plugins: 'code lists',
+            plugins: 'code lists autoresize',
             toolbar: 'undo redo | formatselect| bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist | code | table',
             width: '100%',
-            min_height: '500'
+            min_height: '400'
         });
+
+        // $(document).ready(function () {
+
+        //     var shortDesc = tinyMCE.get('short_desc');
+        //     var desc = tinyMCE.get('desc');
+
+        //     var shortData = "{{$product->short_desc}}";
+        //     var Data = '{{$product->desc}}';
+        //     shortDesc.setProgressState(1);
+        //     desc.setProgressState(1); 
+        //     window.setTimeout(function() {
+        //         shortDesc.setProgressState(0); 
+        //         desc.setProgressState(0); 
+        //         shortDesc.setContent(shortData);
+        //         desc.setContent(Data);
+        //     }, 1000);
+            
+        // });
 
     </script>
     

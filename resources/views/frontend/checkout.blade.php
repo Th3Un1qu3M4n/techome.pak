@@ -161,57 +161,6 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="card shadow-sm product-data">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="table-responsive p-0">
-                            <table class="table align-items-center mb-0">
-                                <thead class="pt-4 pb-3">
-                                    <tr class="text-center opacity-8">
-                                        <th>Name</th>
-                                        <th>Quantity</th>
-                                        <th>Price</th>
-                                        <th>Image</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @php
-                                        $totalPrice = 0;
-                                    @endphp
-                                    @foreach ($cartItems as $item)
-                                        <tr class="text-center align-middle cart-item">
-                                            <td>{{$item->product->name}}</td>
-                                            <input type="hidden" class="item_prod_id" value="{{$item->prod_id}}">
-                                            <td  style="min-width:120px">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text dcr-btn change-qty"> - </span>
-                                                    <input type="number" class="form-control qty-input" value="{{$item->prod_qty}}" style="text-align:center;" disabled>
-                                                    <span class="input-group-text inc-btn change-qty"> + </span>
-                                                </div>
-                                            </td>
-                                            <td id="item-cost">Rs. {{$item->product->price*$item->prod_qty}}</td>
-                                            <td><img src="{{asset('assets/uploads/product/'.$item->product->image)}}" alt="product img" style="height: 50px; width:50px; object-fit:contain;"></td>
-                                            <td>
-                                                 <button class="btn btn-danger removeBtn"  value="{{$item->prod_id}}" ><span class="fa fa-trash"></span> REMOVE</button>
-                                            </td>
-                                        </tr>
-                                        @php
-                                            $totalPrice += $item->product->price*$item->prod_qty;
-                                        @endphp                                        
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                    </div>                 
-                </div>
-                <div class="card-footer">
-                        <h6>
-                            Total Price: {{$totalPrice}}
-                            <button class="float-end btn btn-dark text-white fw-bold">Proceed to Checkout</button>
-                        </h6>
-                </div>
-            </div> --}}
 
         </div>
         

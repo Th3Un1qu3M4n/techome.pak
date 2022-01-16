@@ -25,6 +25,15 @@
         body{
             padding-top: 4vh;
         }
+        .cart-link{
+            background-color: darkgray;
+            color: white !important;
+            border-radius: 15%;
+        }
+        .cart-link:hover{
+            background-color: rgb(255, 80, 80);
+            color: white !important;
+        }
         .breadcrumbs {
             list-style: none;
             height: 2em;

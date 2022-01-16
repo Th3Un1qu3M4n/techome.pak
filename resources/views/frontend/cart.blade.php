@@ -57,12 +57,20 @@
                                         <tr class="text-center align-middle cart-item">
                                             <td>{{$item->product->name}}</td>
                                             <input type="hidden" class="item_prod_id" value="{{$item->prod_id}}">
+                                            <input type="hidden" class="item_prod_qty" value="{{$item->product->quantity}}">
                                             <td  style="min-width:120px">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text dcr-btn change-qty"> - </span>
-                                                    <input type="number" class="form-control qty-input" value="{{$item->prod_qty}}" style="text-align:center;" disabled>
-                                                    <span class="input-group-text inc-btn change-qty"> + </span>
-                                                </div>
+                                                @if ($item->product->quantity >= $item->prod_qty)
+                                                    <div class="input-group mb-3">
+                                                        <span class="input-group-text dcr-btn change-qty"> - </span>
+                                                        <input type="number" class="form-control qty-input" value="{{$item->prod_qty}}" style="text-align:center;" disabled>
+                                                        <span class="input-group-text inc-btn change-qty"> + </span>
+                                                    </div>
+                                                    @php
+                                                        $totalPrice += $item->product->price*$item->prod_qty;
+                                                    @endphp
+                                                @else
+                                                    Out of Stock  <br><small> available: {{$item->product->quantity}}</small>                                                
+                                                @endif
                                             </td>
                                             <td id="item-cost">Rs. {{$item->product->price*$item->prod_qty}}</td>
                                             <td><img src="{{asset('assets/uploads/product/'.$item->product->image)}}" alt="product img" style="height: 50px; width:50px; object-fit:contain;"></td>
@@ -70,9 +78,7 @@
                                                  <button class="btn btn-danger removeBtn"  value="{{$item->prod_id}}" ><span class="fa fa-trash"></span> REMOVE</button>
                                             </td>
                                         </tr>
-                                        @php
-                                            $totalPrice += $item->product->price*$item->prod_qty;
-                                        @endphp                                        
+                                                                                
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -83,7 +89,7 @@
                         <h6>
                             Total Price: {{number_format($totalPrice)}}
                             <a href="{{url('/cart/checkout')}}">
-                                <button class="float-end btn btn-dark text-white fw-bold">Proceed to Checkout</button>
+                                <button class="float-end btn btn-dark text-white fw-bold" {{count($cartItems)<1 ? 'disabled': ''}}>Proceed to Checkout</button>
                             </a>
                         </h6>
                 </div>
@@ -105,9 +111,10 @@
                 
 
                 var text_value = $(this).closest('.cart-item').find('.qty-input').val();
+                var availableProducts = $(this).closest('.cart-item').find('.item_prod_qty').val();
                 var value = parseInt(text_value, 10);
                 value = isNaN(value) ? 1 : value;
-                if(value < 10){
+                if(value < 10 && value < availableProducts){
                     value++;
                     $(this).closest('.cart-item').find('.qty-input').val(value);
                 }                
