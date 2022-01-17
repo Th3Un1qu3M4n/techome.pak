@@ -43,58 +43,59 @@
                         <div class="card-body">
                             <h4 class="text-muted">Billing Details</h4>
                                                     
-                        <form method="POST">
+                        <form action="{{url('/cart/checkout/place-order')}}" method="POST">
+                            @csrf
                             <div class="row my-2 mt-4">
                                 <div class="col-md-6 form-group">
                                     <label for="firstname">First Name</label>
-                                    <input type="text" class="form-control" id="firstname" value="{{Auth::user()->name}}" required>
+                                    <input type="text" class="form-control" id="firstname" name="fname" value="{{Auth::user()->name}}" required>
                                 </div>
             
                                 <div class="col-md-6 form-group">
                                     <label for="lastname">Last Name</label>
-                                    <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+                                    <input type="text" class="form-control" id="lastname" name="lname" placeholder="Last Name">
                                 </div>
                             </div>
             
             
                             <div class="form-group my-2">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" value="{{Auth::user()->email}}" required>
+                                    <input type="email" class="form-control" id="email" name="email" value="{{Auth::user()->email}}" required>
                             </div>
 
                             <div class="form-group my-2">
                                     <label for="pNumber">Phone Number</label>
-                                    <input type="tel" class="form-control" id="pNumber" pattern="^03\d{2}-\d{7}$" placeholder="0300-1234567" required>
+                                    <input type="tel" class="form-control" id="pNumber" name="pnumber" pattern="^03\d{2}-\d{7}$" placeholder="0300-1234567" required>
                             </div>
             
                             <div class="form-group my-2">
                                 <label for="adress">Address</label>
-                                <input type="text" class="form-control" id="adress" placeholder="1234 Main Street" required>
+                                <input type="text" class="form-control" id="adress" name="address1" placeholder="1234 Main Street" required>
                             </div>
             
                             <div class="form-group my-2">
                                 <label for="address2">Address 2
                                     <span class="text-muted">(Optional)</span>
                                 </label>
-                                <input type="text" class="form-control" id="adress2" placeholder="Flat No">
+                                <input type="text" class="form-control" id="adress2" name="address2" placeholder="Flat No">
                             </div>
             
                             <div class="row my-2">
                                 <div class="col-md-4 form-group my-2">
                                     <label for="country">Country</label>
-                                    <select type="text" class="form-control" id="country">
-                                        <option value>Pakistan</option>
+                                    <select type="text" name="country" class="form-control" id="country">
+                                        <option value="Pakistan" selected>Pakistan</option>
                                     </select>
                                 </div>
             
                                 <div class="col-md-4 form-group my-2">
                                     <label for="city">City</label>
-                                    <input type="text" class="form-control" id="city" placeholder="Islamabad" required>
+                                    <input type="text" name="city" class="form-control" id="city" placeholder="Islamabad" required>
                                 </div>
                                 
                                 <div class="col-md-4 form-group my-2">
                                     <label for="postcode">Postcode</label>
-                                    <input type="text" class="form-control" id="city" placeholder="44000" required>
+                                    <input type="text" name="postcode" class="form-control" id="city" placeholder="44000" required>
                                 </div>
                             </div>
             
@@ -103,7 +104,7 @@
                             <h4 class="mb-4">Payment</h4>
 
                             <div class="form-check my-2">
-                                <input type="radio" class="form-check-input" id="cod" name="payment-method" checked required>
+                                <input type="radio" name="method" class="form-check-input" id="cod" name="payment-method" checked required>
                                 <label for="credit" class="form-check-label">Cash on Delivery</label>
                             </div>
                             
@@ -125,7 +126,14 @@
                                 <a href="{{url('/cart')}}" class="btn btn-dark float-start">
                                     Back to Cart
                                 </a>
-                                <button class="btn btn-primary bt-lg btn-block float-end" type="submit">Confirm Order</button>
+                                @if (count($cartItems)>0)
+                                    <button class="btn btn-primary bt-lg btn-block float-end" type="submit">Confirm Order</button>
+                                    
+                                @else
+                                    <a href="{{url('/shop')}}" class="btn btn-primary bt-lg btn-block float-end">
+                                        Continue Shopping
+                                    </a>                                    
+                                @endif
                         </form>
                         </div>
                     </div>
@@ -134,30 +142,39 @@
                     <div class="card shadow-sm order-info">
                         <div class="card-body">
                             <h4 class="text-muted" >Order Details <span class="badge rounded-pill bg-danger float-end">{{count($cartItems)}}<span></h4>
+                            @if (count($cartItems)>0)
+                                <div class="container container-fluid cart-items mt-4">
+                                    @php
+                                        $totalPrice = 0;
+                                    @endphp
+                                    @foreach ($cartItems as $item)
+                                        <div class="row">
+                                            <div class="col-7 item-name float-start">{{$item->product->name}}</div>
+                                            <div class="col-2 item-quantity float-end text-muted">x{{$item->prod_qty}}</div>
+                                            <div class="col-3 item-quantity float-end text-muted">Rs. {{number_format($item->product->price)}}</div>
+                                            {{-- <div class="col-3 item-quantity float-end text-align-right text-muted">Rs. {{$item->prod_qty*$item->product->price}}</div> --}}
+                                        </div>
+                                        @php
+                                            $totalPrice += $item->prod_qty*$item->product->price;
+                                        @endphp
+                                                                            
+                                    @endforeach
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="h5 float-end">
+                                    Total Bill: Rs. {{number_format($totalPrice)}}
+                                </div>
+                            </div>
+                                
+                            @else
 
                             <div class="container container-fluid cart-items mt-4">
-                                @php
-                                    $totalPrice = 0;
-                                @endphp
-                                @foreach ($cartItems as $item)
-                                    <div class="row">
-                                        <div class="col-7 item-name float-start">{{$item->product->name}}</div>
-                                        <div class="col-2 item-quantity float-end text-muted">x{{$item->prod_qty}}</div>
-                                        <div class="col-3 item-quantity float-end text-muted">Rs. {{number_format($item->product->price)}}</div>
-                                        {{-- <div class="col-3 item-quantity float-end text-align-right text-muted">Rs. {{$item->prod_qty*$item->product->price}}</div> --}}
-                                    </div>
-                                    @php
-                                        $totalPrice += $item->prod_qty*$item->product->price;
-                                    @endphp
-                                                                        
-                                @endforeach
+                                No Items in Cart
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <div class="h5 float-end">
-                                Total Bill: Rs. {{number_format($totalPrice)}}
-                            </div>
-                        </div>
+                            
+                            @endif
                     </div>
                 </div>
             </div>

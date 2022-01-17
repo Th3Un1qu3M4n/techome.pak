@@ -33,11 +33,15 @@
     </section>
     
     <section class="cart py-1">
-
+        @php
+            $totalPrice = 0;
+        @endphp
         <div class="container">
             <div class="card shadow-sm product-data">
                 <div class="card-body">
                     <div class="row">
+                        @if (count($cartItems)>0)
+                        
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
                                 <thead class="pt-4 pb-3">
@@ -50,9 +54,6 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @php
-                                        $totalPrice = 0;
-                                    @endphp
                                     @foreach ($cartItems as $item)
                                         <tr class="text-center align-middle cart-item">
                                             <td>{{$item->product->name}}</td>
@@ -83,14 +84,26 @@
                                     </tbody>
                                 </table>
                             </div>
-                    </div>                 
+                            @else
+
+                                <h5 class="text-center">No Products in Cart</h5>
+                                
+                            @endif    
+                        </div>                             
+                                  
                 </div>
                 <div class="card-footer">
                         <h6>
                             Total Price: {{number_format($totalPrice)}}
-                            <a href="{{url('/cart/checkout')}}">
-                                <button class="float-end btn btn-dark text-white fw-bold" {{count($cartItems)<1 ? 'disabled': ''}}>Proceed to Checkout</button>
-                            </a>
+                            @if (count($cartItems)>0)
+                                <a href="{{url('/cart/checkout')}}">
+                                    <button class="float-end btn btn-dark text-white fw-bold">Proceed to Checkout</button>
+                                </a>
+                            @else
+                                <a href="{{url('/shop')}}" class="btn btn-primary bt-lg btn-block float-end">
+                                    Continue Shopping
+                                </a>                                    
+                            @endif
                         </h6>
                 </div>
             </div>
