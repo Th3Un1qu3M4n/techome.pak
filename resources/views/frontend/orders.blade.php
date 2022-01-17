@@ -4,15 +4,7 @@
 
 @section('custom-css')
     <style>
-        .card img{
-            height: 40vh;
-            object-fit: contain;
-            width: 100%;
-            margin-bottom: 25px;
-        }
-        .short_desc{
-            min-height: 10vh;
-        }
+        
         /* Chrome, Safari, Edge, Opera */
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
@@ -41,9 +33,9 @@
     <section class="product py-1">
 
         <div class="container">
-                    <div class="row">
+                    {{-- <div class="row"> --}}
                         @foreach ($orders as $order)
-                        <div class="card shadow-sm orders-data m-2">
+                        <div class="card shadow-sm orders-data mb-5">
                             <div class="card-body">
                                 <div class="row">
                                         <div class="col-md-12">
@@ -72,18 +64,27 @@
                                                     </div>                                          
                                                 @endforeach
                                             </div>
-                                            <label class="fw-bolder lh-lg fs-5">Total Amount: Rs. {{number_format($order->totalprice)}}</label><br>
-                                            
+                                                                                        
                                         </div>
                                         
-                                    </div>
-                                    
-                                    
                                 </div>
+                                    
+                                    
                             </div>
+                            <div class="card-footer">
+                                <label class="fw-bolder float-end lh-lg fs-5">Total Amount: Rs. {{number_format($order->totalprice)}}</label>
+                            </div>
+                        </div>
                         @endforeach
                         
-                    </div>
+                    {{-- </div> --}}
+
+                    {{-- <div class="card">
+                        <div class="card-body">
+                            asfa
+                        </div>
+                        .card-footer
+                    </div> --}}
                                
         </div>
         

@@ -75,4 +75,9 @@ Route::middleware(['auth', 'isAdmin'])->group(function(){
     Route::get('/dashboard/products/edit-product/{id}', 'Admin\ProductController@edit');
     Route::put('/dashboard/products/edit-product/{id}', 'Admin\ProductController@update');
     Route::get('/dashboard/products/delete-product/{id}','Admin\ProductController@delete');
+
+    Route::get('/dashboard/orders', 'Admin\OrdersController@index');
+    Route::get('/dashboard/orders/edit-order/{id}', 'Admin\OrdersController@edit');
+    Route::put('/dashboard/orders/edit-order/{id}', 'Admin\OrdersController@update');
+    Route::get('/dashboard/orders/delete-order/{id}','Admin\OrdersController@delete');
 });

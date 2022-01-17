@@ -84,6 +84,17 @@
                     @csrf
                 </div>
             </form>
+            <hr>
+            <div class="col-sm-6">
+                @foreach ($order->orderitems as $item)
+                    <div class="row">
+                        <div class="col-7 item-name float-start">{{$item->product->name}}</div>
+                        <div class="col-2 item-quantity float-end text-muted">x{{$item->qty}}</div>
+                        <div class="col-3 item-quantity float-end text-muted">Rs. {{number_format($item->product->price)}}</div>
+                        {{-- <div class="col-3 item-quantity float-end text-align-right text-muted">Rs. {{$item->prod_qty*$item->product->price}}</div> --}}
+                    </div>                                          
+                @endforeach
+            </div>
         </div>
     </div>
     
