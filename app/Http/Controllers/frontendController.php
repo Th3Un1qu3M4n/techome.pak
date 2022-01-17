@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Review;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class frontendController extends Controller
@@ -36,7 +37,8 @@ class frontendController extends Controller
             
             if(Product::where('id', $prod_id)->where('status','1')->exists()){
                 $product = Product::where('id', $prod_id)->where('status','1')->first();
-                return view('frontend.product', compact('product', 'category'));
+                $reviews = Review::where('prod_id', $prod_id)->get();
+                return view('frontend.product', compact('product', 'category', 'reviews'));
             }
             return redirect('/')->with('status','Product not Available');
         }else{

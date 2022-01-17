@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function(){
-//     return view('frontend.index');
-// });
+Route::get('/gif', function(){
+    return view('frontend.gify');
+});
 
 //////////////////////////////////////
 //        FRONTEND ROUTES
@@ -49,6 +49,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cart/checkout/place-order', 'CheckoutController@placeOrder');
     
     Route::get('/orders', 'OrdersController@index');
+
+    Route::get('/add-review/{id}', 'ReviewController@add');
+    Route::post('/add-review/{id}', 'ReviewController@submit');
 });
 
 

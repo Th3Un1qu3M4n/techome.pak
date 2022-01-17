@@ -76,18 +76,21 @@
                                         <span class="input-group-text inc-btn"> + </span>
                                     </div>
                                 </div>
-                                @if ($product->quantity > 0)
-                                    <div class="col-sm-6 col-md-4">
-                                        <button class="btn btn-danger addToCart-btn">Add to Cart</button>
-                                    </div>
-                                @endif
+                                <div class="col-sm-4 col-md-7">
+                                        @if ($product->quantity > 0)
+                                            <button class="btn btn-danger addToCart-btn">Add to Cart</button>
+                                        @endif
+                                        <a href="{{url('add-review/'.$product->id)}}">
+                                            <button class="btn btn-info text-white ">Add a review</button>
+                                        </a>
+                                </div>
+                                
                             </div>
                                 
                               
 
                         </div>
                     </div>
-                    
 
                 </div>
             </div>
@@ -98,6 +101,36 @@
                 </h5>
                 <div class="card-body">
                     {!! $product->desc !!}
+                    
+
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <h5 class="card-header">
+                    Product Reviews
+                </h5>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                @foreach ($reviews as $review)
+                                <div class="review-card p-3 border shadow-sm rounded-3 mb-3">
+                                    <label class="fw-bold">{{$review->user->name}}</label>
+                                    @if ($review->user_id == Auth::id())
+                                        <a href="" class="float-end btn btn-danger">Delete</a>                                    
+                                    @endif
+                                    <br>    
+                                    <small>Reviewed on {{date('d-M-Y', strtotime($review->created_at))}}</small>
+                                    <p> {{$review->user_review}}
+                                    </p>
+                                </div>
+                                
+                                    
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                     
 
                 </div>
