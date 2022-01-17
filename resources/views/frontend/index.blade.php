@@ -56,6 +56,7 @@
                     @foreach ($trending_products as $item)
                         
                             <div class="card">
+                                <a  class="text-reset text-decoration-none" href="{{url('shop/'.$item->category->slug.'/'.$item->id)}}">
                                 <img src="{{asset('assets/uploads/product/'.$item->image)}}" alt="">
                                 <div class="card-body mt-2">
                                     
@@ -63,6 +64,7 @@
                                     <span class="price">Rs.{{$item->price}}</span>
                                     
                                 </div>
+                                </a>
                             </div>
                         
                     @endforeach

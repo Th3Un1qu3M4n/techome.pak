@@ -8,6 +8,7 @@
             height: 40vh;
             object-fit: contain;
             width: 100%;
+            margin-bottom: 25px;
         }
         .card-body {
             border-top: 2px solid rgba(207, 207, 207,0.5);

@@ -25,6 +25,9 @@
         body{
             padding-top: 4vh;
         }
+        .content_container{
+            min-height: 50vh;
+        }
         .cart-link{
             background-color: darkgray;
             color: white !important;
@@ -55,31 +58,35 @@
             color:#ff0000 !important;
         }
 
+        .social-links a{
+            text-decoration: none;
+        }
+
     </style>
     @yield('custom-css')
 
 </head>
 <body>
    @include('layouts.inc.navbar')
-
+   
    <div class="content_container">
        @yield('content')
-   </div>
-
-   @include('layouts.inc.footer')
-
-
+    </div>
+    
+    @include('layouts.inc.footer')
+    
+    
     <!-- Scripts -->
     <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('frontend/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
-
-
+    
+    
     <!-- Sweet Alert 2 -->
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    
     @if (session('status'))
-        <script>
+    <script>
             // console.log("fire Swal");
             Swal.fire({
                 icon: 'success',
@@ -88,11 +95,13 @@
             })
         </script>
     
-        
+    
     @endif
     
     @yield('custom-scripts')
-
+    
+    
+    
    
     
 </body>
