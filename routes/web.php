@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cart/update', 'CartController@update');
 
     Route::get('/cart/checkout', 'CheckoutController@viewCheckout');
+    Route::post('/cart/checkout/place-order', 'CheckoutController@placeOrder');
     
 });
 
