@@ -44,11 +44,19 @@ class CheckoutController extends Controller
         $order->city = $request->input('city');
         $order->postcode = $request->input('postcode');
         $order->trackingid = 'techome-'.$time;
+
+        $cartItems = Cart::where('user_id', Auth::id())->get();
+        $totalPrice = 0;
+        foreach($cartItems as $item){
+            $totalPrice += $item->prod_qty * $item->product->price;
+        }
+        $order->totalprice = $totalPrice;
+
         $order->save();
 
         
 
-        $cartItems = Cart::where('user_id', Auth::id())->get();
+        
 
         foreach($cartItems as $item){
             OrderItem::create([

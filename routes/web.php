@@ -27,6 +27,8 @@ Route::get('/', 'frontendController@index');
 Route::get('/shop', 'frontendController@shop');
 Route::get('/shop/{slug}', 'frontendController@viewCategory');
 Route::get('/shop/{slug}/{prod_id}', 'frontendController@viewProduct');
+Route::get('/search', 'SearchController@search');
+Route::post('/searching', 'SearchController@searching');
 
 Auth::routes();
 
@@ -46,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cart/checkout', 'CheckoutController@viewCheckout');
     Route::post('/cart/checkout/place-order', 'CheckoutController@placeOrder');
     
+    Route::get('/orders', 'OrdersController@index');
 });
 
 

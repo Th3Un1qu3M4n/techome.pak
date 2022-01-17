@@ -18,6 +18,11 @@
                 <li class="nav-item">
                 <a class="nav-link" href="{{url('/shop')}}">Shop</a>
                 </li>
+                <form class="d-flex nav-item" id="search-form" action="{{url('/searching')}}" method="POST">
+                    @csrf
+                    <input class="form-control me-2" type="search" id="search-input" name="seach_product" placeholder="Search Products" aria-label="Search">
+                    <button class="btn btn-outline-danger" type="submit">Search</button>
+                </form>
             </ul>
 
 
@@ -50,6 +55,7 @@
                             @if (Auth::user()->role_as == '1')
                                 <a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard</a>
                             @endif
+                            <a class="dropdown-item" href="{{ url('orders') }}">Orders</a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                              document.getElementById('logout-form').submit();">

@@ -16,7 +16,7 @@
     <link id="pagestyle" href="{{ asset('frontend/css/bootstrap.min.css') }}" rel="stylesheet" />
     <link id="pagestyle" href="{{ asset('frontend/css/owl.carousel.min.css') }}" rel="stylesheet" />
     <link id="pagestyle" href="{{ asset('frontend/css/owl.theme.default.min.css') }}" rel="stylesheet" />
-    
+    <link href="{{ asset('frontend/css/jquery-ui.css') }}" rel="stylesheet">
     
     <!-- Icons Kits -->
     <script src="https://kit.fontawesome.com/bcccf98175.js" crossorigin="anonymous"></script>
@@ -24,6 +24,9 @@
     <style>
         body{
             padding-top: 4vh;
+        }
+        .ui-widget{
+            z-index: 10000;
         }
         .content_container{
             min-height: 50vh;
@@ -80,6 +83,7 @@
     <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('frontend/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
+    <script src="{{asset('frontend/js/jquery-ui.js')}}"></script>
     
     
     <!-- Sweet Alert 2 -->
@@ -92,11 +96,36 @@
                 icon: 'success',
                 title: 'Done',
                 text: '{{session('status')}}'
-            })
-        </script>
-    
+            });
+    </script>
     
     @endif
+
+    <script>
+        
+            $(document).ready(function () {
+                $("#search-input").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            url: "/search",
+                            data: {
+                                term: request.term
+                            },
+                            dataType: "json",
+                            success: function (data) {
+                                response(data);
+                            }
+                        });
+                        
+                    },
+                    minLength: 1,
+                });
+
+                $(document).on('click', 'ui-menu-item', function () {
+                    $('#search-from').submit();
+                });
+            });
+    </script>
     
     @yield('custom-scripts')
     

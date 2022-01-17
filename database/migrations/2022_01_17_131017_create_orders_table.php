@@ -27,6 +27,7 @@ class CreateOrdersTable extends Migration
             $table->string('postcode');
             $table->string('method')->default('cod');
             $table->string('trackingid');
+            $table->string('totalprice');
             $table->tinyInteger('status')->default('0');
             $table->timestamps();
         });
