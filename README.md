@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About Techome
 
 The web-based e-commerce store, TECHOME provides maximum functionalities of shopping on an online platform. Now a days, people want to get everything online in order to save the time and hassle of going to a specific shop to buy the required products. With that in mind, I am developing the online Shopping Application that will allow the user to purchase the desired products on an online platform. Using this online platform, the user can also keep track of the orders he has booked and can also view and edit his profile as he desires.
 
