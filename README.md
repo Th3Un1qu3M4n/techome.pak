@@ -20,9 +20,15 @@ Assuming you've already installed on your machine: PHP (>= 7.0.0), [Laravel](htt
 composer install
 npm install
 
-# create .env file along with database connection and generate the application key
+# create .env file and generate the application key
 cp .env.example .env
 php artisan key:generate
+
+#create databse with following configuration
+host: 127.0.0.1 (localhost)
+database: techome_pak
+username: root
+password: (no password)
 
 # Generate tables in database
 php artisan migrate
